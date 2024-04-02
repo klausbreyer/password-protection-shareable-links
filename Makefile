@@ -12,7 +12,7 @@ endif
 	chmod +x tailwindcss
 
 watch:
-	./tailwindcss -i ./css/tailwind.css -o ./static/tailwind.css --watch
+	./tailwindcss -i ./styles.css -o ./dist/styles.css --watch
 
 tailwind-build:
-	./tailwindcss -i ./css/tailwind.css -o ./static/tailwind.css --minify
+	./tailwindcss -i ./styles.css -o ./dist/styles.css --minify

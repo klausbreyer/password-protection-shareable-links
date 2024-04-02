@@ -14,6 +14,8 @@ include_once plugin_dir_path(__FILE__) . 'gate.php';
 
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
+
+
 register_activation_hook(__FILE__, 'safepasslink_activate');
 function safepasslink_activate()
 {

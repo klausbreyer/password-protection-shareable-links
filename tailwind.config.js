@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.php", "./**/*.html", "./**/*.js"],
+  content: ["./**/*.{html,js,jsx,ts,tsx,vue,php}"],
   theme: {
     extend: {
       fontSize: {},
     },
   },
   plugins: [],
+  //   prefix: "ppwsl-",
 };
