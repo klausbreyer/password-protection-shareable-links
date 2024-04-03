@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "Ласкаво просимо! Ви отримали спеціальне посилання для доступу, яке дозволяє вам безпосередньо доступитися до певного контенту, що інакше захищено паролем. Це посилання вже містить необхідний пароль у зашифрованій формі. Будь ласка, підтвердіть нижче, як довго ви хочете залишатися в системі, щоб безперебійно отримувати доступ до контенту без необхідності вводити пароль знову."
+
+msgid "How long would you like to stay logged in?"
+msgstr "Як довго ви хочете залишатися в системі?"
+
+msgid "1 hour"
+msgstr "1 година"
+
+msgid "1 day"
+msgstr "1 день"
+
+msgid "1 week"
+msgstr "1 тиждень"
+
+msgid "1 month"
+msgstr "1 місяць"
+
+msgid "1 year"
+msgstr "1 рік"
+
+msgid "Confirm Access"
+msgstr "Підтвердити доступ"
+
+msgid "You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again."
+msgstr "Ви збираєтеся ввійти на сторінку, захищену паролем. Щоб отримати доступ до захищеного контенту, вам потрібно ввести правильний пароль. Також будь ласка, виберіть, як довго ви хочете отримувати доступ до контенту без повторного введення пароля."
+
+msgid "The entered password is incorrect. Please try again."
+msgstr "Введений пароль невірний. Будь ласка, спробуйте ще раз."
+
+msgid "Please enter the password:"
+msgstr "Будь ласка, введіть пароль:"
+
+msgid "Access"
+msgstr "Доступ"
+
+msgid "The password in your link is outdated or incorrect. Please request a new link or contact the website administrator."
+msgstr "Пароль у вашому посиланні застарілий або невірний. Будь ласка, запросіть нове посилання або зв'яжіться з адміністратором веб-сайту."
+
+msgid "The plugin is not yet configured."
+msgstr "Плагін ще не налаштовано."
+
+msgid "Go to settings."
+msgstr "Перейти до налаштувань."
+
+msgid "With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection."
+msgstr "За допомогою цього посилання будь-хто матиме прямий доступ до захищеної сторінки або публікації. Після доступу вільна навігація можлива так, ніби пароль було введено вручну. Пароль безпечно зашифровано в цьому посиланні, щоб забезпечити захист даних."
+
+msgid "Important:"
+msgstr "Важливо:"
+
+msgid "This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content."
+msgstr "Це посилання слід передавати лише перевіреним особам. Кожен, хто має це посилання, матиме доступ до всього захищеного контенту."
+
+msgid "Your secure link:"
+msgstr "Ваш безпечний посилання:"
+
+msgid "Copy"
+msgstr "Копіювати"
+
+msgid "Settings for Password Protection with Shareable Links"
+msgstr "Налаштування захисту паролем з посиланнями для спільного доступу"
+
+msgid "Enable Password Protection"
+msgstr "Увімкнути захист паролем"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Enter your settings for password protection here."
+msgstr "Введіть тут свої налаштування для захисту паролем."
+
+msgid "Password Protection with Shareable Links"
+msgstr "Захист паролем з посиланнями для спільного доступу"
+
+msgid "is installed but not configured correctly. Please set a password and enable password protection in the"
+msgstr "встановлено, але не налаштовано правильно. Будь ласка, встановіть пароль та увімкніть захист паролем у"
+
+msgid "plugin settings"
+msgstr "налаштуваннях плагіну"

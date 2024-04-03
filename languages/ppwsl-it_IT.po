@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "Benvenuto! Hai ricevuto un link di accesso speciale che ti consente di accedere direttamente a contenuti specifici altrimenti protetti da una password. Questo link contiene già la password richiesta in forma crittografata. Si prega di confermare di seguito per quanto tempo si desidera rimanere collegati per accedere senza problemi ai contenuti senza dover reinserire la password."
+
+msgid "How long would you like to stay logged in?"
+msgstr "Quanto tempo vorresti rimanere connesso?"
+
+msgid "1 hour"
+msgstr "1 ora"
+
+msgid "1 day"
+msgstr "1 giorno"
+
+msgid "1 week"
+msgstr "1 settimana"
+
+msgid "1 month"
+msgstr "1 mese"
+
+msgid "1 year"
+msgstr "1 anno"
+
+msgid "Confirm Access"
+msgstr "Conferma Accesso"
+
+msgid "You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again."
+msgstr "Stai per entrare in una pagina protetta da password. Per accedere ai contenuti protetti, devi inserire la password corretta. Seleziona anche per quanto tempo vuoi accedere ai contenuti senza reinserire la password."
+
+msgid "The entered password is incorrect. Please try again."
+msgstr "La password inserita è incorretta. Si prega di riprovare."
+
+msgid "Please enter the password:"
+msgstr "Si prega di inserire la password:"
+
+msgid "Access"
+msgstr "Accesso"
+
+msgid "The password in your link is outdated or incorrect. Please request a new link or contact the website administrator."
+msgstr "La password nel tuo link è obsoleta o errata. Richiedi un nuovo link o contatta l'amministratore del sito web."
+
+msgid "The plugin is not yet configured."
+msgstr "Il plugin non è ancora configurato."
+
+msgid "Go to settings."
+msgstr "Vai alle impostazioni."
+
+msgid "With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection."
+msgstr "Con questo link, chiunque avrà accesso diretto alla pagina o al post protetto. Dopo l'accesso, è possibile una navigazione libera come se la password fosse stata inserita manualmente. La password è crittografata in modo sicuro in questo link per garantire la protezione dei dati."
+
+msgid "Important:"
+msgstr "Importante:"
+
+msgid "This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content."
+msgstr "Questo link dovrebbe essere condiviso solo con persone di fiducia. Chiunque possieda questo link avrà accesso a tutti i contenuti protetti."
+
+msgid "Your secure link:"
+msgstr "Il tuo link sicuro:"
+
+msgid "Copy"
+msgstr "Copia"
+
+msgid "Settings for Password Protection with Shareable Links"
+msgstr "Impostazioni per la protezione con password con link condivisibili"
+
+msgid "Enable Password Protection"
+msgstr "Abilita la protezione con password"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Enter your settings for password protection here."
+msgstr "Inserisci qui le tue impostazioni per la protezione con password."
+
+msgid "Password Protection with Shareable Links"
+msgstr "Protezione con password con link condivisibili"
+
+msgid "is installed but not configured correctly. Please set a password and enable password protection in the"
+msgstr "è installato ma non configurato correttamente. Si prega di impostare una password e abilitare la protezione con password nelle"
+
+msgid "plugin settings"
+msgstr "impostazioni del plugin"

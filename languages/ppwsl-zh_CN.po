@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "欢迎！您收到了一个特殊的访问链接，允许您直接访问其他方式需要密码保护的特定内容。此链接已包含以加密形式的必需密码。请在下面确认您希望登录并无缝访问内容的时长，无需再次输入密码。"
+
+msgid "How long would you like to stay logged in?"
+msgstr "您希望保持登录状态多久？"
+
+msgid "1 hour"
+msgstr "1 小时"
+
+msgid "1 day"
+msgstr "1 天"
+
+msgid "1 week"
+msgstr "1 周"
+
+msgid "1 month"
+msgstr "1 个月"
+
+msgid "1 year"
+msgstr "1 年"
+
+msgid "Confirm Access"
+msgstr "确认访问"
+
+msgid "You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again."
+msgstr "您即将进入一个受密码保护的页面。要访问被保护的内容，您需要输入正确的密码。请同时选择您希望访问内容的时间，无需再次输入密码。"
+
+msgid "The entered password is incorrect. Please try again."
+msgstr "您输入的密码不正确。请重试。"
+
+msgid "Please enter the password:"
+msgstr "请输入密码："
+
+msgid "Access"
+msgstr "访问"
+
+msgid "The password in your link is outdated or incorrect. Please request a new link or contact the website administrator."
+msgstr "您链接中的密码已过期或不正确。请请求一个新链接或联系网站管理员。"
+
+msgid "The plugin is not yet configured."
+msgstr "插件尚未配置。"
+
+msgid "Go to settings."
+msgstr "前往设置。"
+
+msgid "With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection."
+msgstr "通过此链接，任何人都将直接访问受保护的页面或帖子。访问后，可以自由导航，就像手动输入密码一样。密码在此链接中安全加密，以确保数据保护。"
+
+msgid "Important:"
+msgstr "重要："
+
+msgid "This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content."
+msgstr "此链接应仅与信任的个人共享。任何拥有此链接的人都将访问所有受保护的内容。"
+
+msgid "Your secure link:"
+msgstr "您的安全链接："
+
+msgid "Copy"
+msgstr "复制"
+
+msgid "Settings for Password Protection with Shareable Links"
+msgstr "可共享链接的密码保护设置"
+
+msgid "Enable Password Protection"
+msgstr "启用密码保护"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Enter your settings for password protection here."
+msgstr "在此处输入您的密码保护设置。"
+
+msgid "Password Protection with Shareable Links"
+msgstr "具有可共享链接的密码保护"
+
+msgid "is installed but not configured correctly. Please set a password and enable password protection in the"
+msgstr "已安装但未正确配置。请设置密码并在以下位置启用密码保护"
+
+msgid "plugin settings"
+msgstr "插件设置"

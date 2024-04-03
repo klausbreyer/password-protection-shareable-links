@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "Bem-vindo! Recebeu um link de acesso especial que lhe permite aceder diretamente a conteúdos específicos que, de outra forma, estariam protegidos por uma senha. Este link já contém a senha necessária em forma encriptada. Por favor, confirme abaixo quanto tempo gostaria de permanecer conectado para aceder aos conteúdos sem necessidade de inserir novamente a senha."
+
+msgid "How long would you like to stay logged in?"
+msgstr "Quanto tempo gostaria de permanecer conectado?"
+
+msgid "1 hour"
+msgstr "1 hora"
+
+msgid "1 day"
+msgstr "1 dia"
+
+msgid "1 week"
+msgstr "1 semana"
+
+msgid "1 month"
+msgstr "1 mês"
+
+msgid "1 year"
+msgstr "1 ano"
+
+msgid "Confirm Access"
+msgstr "Confirmar Acesso"
+
+msgid "You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again."
+msgstr "Está prestes a entrar numa página protegida por senha. Para aceder ao conteúdo protegido, precisa de inserir a senha correta. Por favor, selecione também quanto tempo quer aceder ao conteúdo sem ter de inserir a senha novamente."
+
+msgid "The entered password is incorrect. Please try again."
+msgstr "A senha introduzida está incorrecta. Por favor, tente novamente."
+
+msgid "Please enter the password:"
+msgstr "Por favor, introduza a senha:"
+
+msgid "Access"
+msgstr "Acesso"
+
+msgid "The password in your link is outdated or incorrect. Please request a new link or contact the website administrator."
+msgstr "A senha no seu link está desatualizada ou é incorreta. Por favor, solicite um novo link ou contacte o administrador do website."
+
+msgid "The plugin is not yet configured."
+msgstr "O plugin ainda não está configurado."
+
+msgid "Go to settings."
+msgstr "Ir para as configurações."
+
+msgid "With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection."
+msgstr "Com este link, qualquer pessoa terá acesso direto à página ou post protegido. Após aceder, a navegação livre é possível como se a senha fosse inserida manualmente. A senha está seguramente encriptada neste link para garantir a proteção de dados."
+
+msgid "Important:"
+msgstr "Importante:"
+
+msgid "This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content."
+msgstr "Este link só deve ser partilhado com pessoas de confiança. Qualquer pessoa que possua este link terá acesso a todo o conteúdo protegido."
+
+msgid "Your secure link:"
+msgstr "O seu link seguro:"
+
+msgid "Copy"
+msgstr "Copiar"
+
+msgid "Settings for Password Protection with Shareable Links"
+msgstr "Configurações para Proteção de Senha com Links Partilháveis"
+
+msgid "Enable Password Protection"
+msgstr "Ativar Proteção de Senha"
+
+msgid "Password"
+msgstr "Senha"
+
+msgid "Enter your settings for password protection here."
+msgstr "Introduza aqui as suas configurações para proteção por senha."
+
+msgid "Password Protection with Shareable Links"
+msgstr "Proteção de Senha com Links Partilháveis"
+
+msgid "is installed but not configured correctly. Please set a password and enable password protection in the"
+msgstr "está instalado mas não está configurado corretamente. Por favor, defina uma senha e ative a proteção de senha nas"
+
+msgid "plugin settings"
+msgstr "configurações do plugin"

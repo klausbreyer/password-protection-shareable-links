@@ -2,8 +2,6 @@
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
 
-
-
 add_action('admin_menu', 'ppwsl_add_admin_menu');
 add_action('admin_init', 'ppwsl_settings_init');
 
@@ -18,14 +16,14 @@ function ppwsl_settings_init()
 
 	add_settings_section(
 		'ppwsl_ppwsl_section',
-		__('Einstellungen für Password Protection with Shareable Links', 'password-protection-with-shareable-links'),
+		__('Settings for Password Protection with Shareable Links', 'ppwsl'),
 		'ppwsl_settings_section_callback',
 		'password-protection-with-shareable-links'
 	);
 
 	add_settings_field(
 		'ppwsl_password_protect',
-		__('Passwortschutz aktivieren', 'password-protection-with-shareable-links'),
+		__('Enable Password Protection', 'ppwsl'),
 		'ppwsl_password_protect_render',
 		'password-protection-with-shareable-links',
 		'ppwsl_ppwsl_section'
@@ -33,7 +31,7 @@ function ppwsl_settings_init()
 
 	add_settings_field(
 		'ppwsl_text_field_0',
-		__('Password', 'password-protection-with-shareable-links'),
+		__('Password', 'ppwsl'),
 		'ppwsl_text_field_0_render',
 		'password-protection-with-shareable-links',
 		'ppwsl_ppwsl_section'
@@ -74,7 +72,7 @@ function ppwsl_options_page()
 }
 function ppwsl_settings_section_callback()
 {
-	echo __('Geben Sie hier Ihre Einstellungen für den Passwortschutz ein.', 'password-protection-with-shareable-links');
+	echo __('Enter your settings for password protection here.', 'ppwsl');
 }
 
 add_action('admin_notices', 'ppwsl_check_configuration');
@@ -88,12 +86,18 @@ function ppwsl_check_configuration()
 	$isPasswordProtectionEnabled = isset($options['ppwsl_password_protect']) && $options['ppwsl_password_protect'];
 	$savedPassword = $options['ppwsl_text_field_0'] ?? '';
 
-	// Überprüfen, ob der Passwortschutz aktiviert ist und das Passwort gesetzt wurde
+	// Check if password protection is enabled and password is set
 	if (!$isPasswordProtectionEnabled || strlen($savedPassword) === 0) {
-		// Plugin ist nicht korrekt konfiguriert, zeige Warnung
+		// Plugin is not configured correctly, show warning
 		?>
 		<div class="notice notice-warning is-dismissible">
-			<p><strong>Password Protection with Shareable Links</strong> ist installiert, aber noch nicht korrekt konfiguriert. Bitte setzen Sie ein Passwort und aktivieren Sie den Passwortschutz in den <a href="options-general.php?page=password-protection-with-shareable-links">Plugin-Einstellungen</a>.</p>
+			<p><strong>
+					<?php _e('Password Protection with Shareable Links', 'ppwsl'); ?>
+				</strong>
+				<?php _e('is installed but not configured correctly. Please set a password and enable password protection in the', 'ppwsl'); ?> <a href="options-general.php?page=password-protection-with-shareable-links">
+					<?php _e('plugin settings', 'ppwsl'); ?>
+				</a>.
+			</p>
 		</div>
 		<?php
 	}

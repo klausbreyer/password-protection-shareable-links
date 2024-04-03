@@ -20,3 +20,12 @@ watch:
 
 tailwind-build:
 	./tailwindcss -i ./styles.css -o ./dist/styles.css --minify
+
+convert-po-mo:
+	for file in languages/*.po; do \
+		msgfmt -o $${file%.po}.mo $$file; \
+	done
+
+build:
+	make tailwind-build
+	make convert-po-mo

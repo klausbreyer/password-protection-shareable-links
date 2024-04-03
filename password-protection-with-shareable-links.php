@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Password Protection with Shareable Links
  * Description: Password protection with seamless sharing and secure link generation.
- * Version: 0.1
- * Author: Klaus Breyer
+ * Version: 1.0
+ * Author: klausbreyer
  */
 
 
@@ -27,6 +27,17 @@ function ppwsl_activate()
         update_option('ppwsl_salt', $salt);
     }
 }
+
+// Laden Sie Ihre Textdomain im init Hook
+add_action('init', 'ppwsl_load_textdomain');
+function ppwsl_load_textdomain()
+{
+    load_plugin_textdomain('ppwsl', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+}
+
+
+
+
 add_action('template_redirect', 'ppwsl_protect_content');
 function ppwsl_protect_content()
 {

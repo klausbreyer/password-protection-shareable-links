@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "Willkommen! Sie haben einen speziellen Zugangslink erhalten, der es Ihnen ermöglicht, direkt auf bestimmte Inhalte zuzugreifen, die sonst durch ein Passwort geschützt sind. Dieser Link beinhaltet bereits das erforderliche Passwort in verschlüsselter Form. Bitte bestätigen Sie nachfolgend, wie lange Sie eingeloggt bleiben möchten, um nahtlos auf die Inhalte zugreifen zu können, ohne das Passwort erneut eingeben zu müssen."
+
+msgid "How long would you like to stay logged in?"
+msgstr "Wie lange möchten Sie eingeloggt bleiben?"
+
+msgid "1 hour"
+msgstr "1 Stunde"
+
+msgid "1 day"
+msgstr "1 Tag"
+
+msgid "1 week"
+msgstr "1 Woche"
+
+msgid "1 month"
+msgstr "1 Monat"
+
+msgid "1 year"
+msgstr "1 Jahr"
+
+msgid "Confirm Access"
+msgstr "Zugang bestätigen"
+
+msgid "You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again."
+msgstr "Sie sind im Begriff, eine passwortgeschützte Seite zu betreten. Um Zugang zu den geschützten Inhalten zu erhalten, müssen Sie das korrekte Passwort eingeben. Bitte wählen Sie auch, wie lange Sie ohne erneute Passworteingabe auf die Inhalte zugreifen möchten."
+
+msgid "The entered password is incorrect. Please try again."
+msgstr "Das eingegebene Passwort ist falsch. Bitte versuchen Sie es erneut."
+
+msgid "Please enter the password:"
+msgstr "Bitte geben Sie das Passwort ein:"
+
+msgid "Access"
+msgstr "Zugang"
+
+msgid "The password in your link is outdated or incorrect. Please request a new link or contact the website administrator."
+msgstr "Das Passwort in Ihrem Link ist veraltet oder falsch. Bitte bitten Sie um einen neuen Link oder kontaktieren Sie den Administrator der Website."
+
+msgid "The plugin is not yet configured."
+msgstr "Das Plugin ist noch nicht konfiguriert."
+
+msgid "Go to settings."
+msgstr "Zu den Einstellungen."
+
+msgid "With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection."
+msgstr "Mit diesem Link erhält jeder direkten Zugriff auf die geschützte Seite oder den Beitrag. Nach dem Zugriff ist eine freie Navigation möglich, als wäre das Passwort manuell eingegeben worden. Das Passwort ist in diesem Link sicher verschlüsselt, um den Schutz der Daten zu gewährleisten."
+
+msgid "Important:"
+msgstr "Wichtig:"
+
+msgid "This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content."
+msgstr "Dieser Link sollte nur mit Personen geteilt werden, denen vertraut wird. Jeder, der diesen Link besitzt, hat Zugang zu allen geschützten Inhalten."
+
+msgid "Your secure link:"
+msgstr "Ihr sicherer Link:"
+
+msgid "Copy"
+msgstr "Kopieren"
+
+msgid "Settings for Password Protection with Shareable Links"
+msgstr "Einstellungen für Passwortschutz mit teilbaren Links"
+
+msgid "Enable Password Protection"
+msgstr "Passwortschutz aktivieren"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Enter your settings for password protection here."
+msgstr "Geben Sie hier Ihre Einstellungen für den Passwortschutz ein."
+
+msgid "Password Protection with Shareable Links"
+msgstr "Passwortschutz mit teilbaren Links"
+
+msgid "is installed but not configured correctly. Please set a password and enable password protection in the"
+msgstr "ist installiert, aber noch nicht korrekt konfiguriert. Bitte legen Sie ein Passwort fest und aktivieren Sie den Passwortschutz in den"
+
+msgid "plugin settings"
+msgstr "Plugin-Einstellungen"
