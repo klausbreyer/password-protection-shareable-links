@@ -1,5 +1,9 @@
+kill:
+	lsof -t -i tcp:8000 | xargs kill -9
+
 start:
-	/opt/homebrew/opt/php@8.3/bin/php -S localhost:8000 -t ../../../
+	make kill
+	/opt/homebrew/opt/php@8.3/bin/php -S localhost:8000 -t ../../../ & ./tailwindcss -i ./styles.css -o ./dist/styles.css --watch
 
 
 tailwind-download:
