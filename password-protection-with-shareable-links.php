@@ -56,9 +56,8 @@ function ppwsl_protect_content()
     $savedPassword = $options['ppwsl_text_field_0'];
     $salt = get_option('ppwsl_salt');
 
-
-    // Formularverarbeitung
-    if (isset($_POST['ppwsl_password_confirm'])) {
+    // confirm
+    if (isset($_POST['ppwsl_password_confirm']) && wp_verify_nonce($_POST['_wpnonce'], 'ppwsl_nonce')) {
         $decryptedPassword = ppwsl_decrypt($_GET['password'], $salt);
         if ($decryptedPassword === $savedPassword) {
             $duration = isset($_POST['ppwsl_duration']) ? (int) $_POST['ppwsl_duration'] : 3600;
@@ -70,21 +69,19 @@ function ppwsl_protect_content()
             exit;
         }
     }
-    // Überprüfung und Verarbeitung des Formulars
-    if (isset($_POST['ppwsl_password'])) {
+    // send pw.
+    if (isset($_POST['ppwsl_password']) && wp_verify_nonce($_POST['_wpnonce'], 'ppwsl_nonce')) {
         $passFromUser = ppwsl_encrypt($_POST['ppwsl_password'], $salt);
         if ($passFromUser === ppwsl_encrypt($savedPassword, $salt)) {
             $duration = isset($_POST['ppwsl_duration']) ? (int) $_POST['ppwsl_duration'] : 3600; // Standardmäßig 1 Stunde
             setcookie('ppwsl_pass', $passFromUser, time() + $duration, COOKIEPATH, COOKIE_DOMAIN);
             wp_redirect(remove_query_arg(array('pass'))); // URL bereinigen
-            exit;
         } else {
-
             ppwsl_show_password_form(true);
             exit;
-
         }
     }
+
     // url
     if (isset($_GET['password'])) {
         $encryptedPassword = $_GET['password'];

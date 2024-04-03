@@ -1,7 +1,7 @@
 
 === Password Protection with Shareable Links ===
 Contributors: klausbreyer
-Tags: password, protection, shareable, links, content, access
+Tags: password, protection, sharing
 Requires at least: 5.2
 Tested up to: 6.5
 Requires PHP: 7.2
@@ -22,11 +22,22 @@ Password Protection with Shareable Links  is a WordPress plugin designed to enha
 
 == Frequently Asked Questions ==
 
-= How does this plugin work? =
-
-This plugin encrypts a password and appends it to URLs as a query parameter, enabling direct access to protected content for anyone with the link.
-
 = How do I configure the plugin? =
 
-After activation, go to the plugin settings to set a global password and choose whether to append the password to URLs automatically.
+After activating the plugin, navigate to the plugin settings where you can set a universal password for your content. Additionally, you have the option to automatically append this password to your site's URLs, providing seamless access to protected content. For a visual guide, see: ![Plugin Options](https://a0a6.com/ppwsl/options.png)
 
+= When is the password prompt displayed? =
+
+A password prompt is displayed whenever a new visitor accesses your blog or a specific article for the first time. This ensures that only users with the correct password can view your protected content. See the password prompt here: ![Password Gate](https://a0a6.com/ppwsl/gate_pw.png)
+
+= How can I generate a link that allows direct access? =
+
+The plugin encrypts a password and appends it as a query parameter to URLs, enabling direct access to protected content for anyone with the link. This feature can be utilized when creating or editing a post/page, via a dedicated meta box provided by the plugin. For further details, visit: ![Generating Shareable Link](https://a0a6.com/ppwsl/meta.png)
+
+= Will users be aware that they are accessing a secured link? =
+
+Yes, users will be informed that they are accessing content through a secure link. Furthermore, they have the option to choose how long they wish to store the credentials, enhancing both security and convenience. For an example, check out: ![Secured Link Notification](https://a0a6.com/ppwsl/gate_link.png)
+
+= What happens if I change the password? =
+
+Should the password be changed, users attempting to access content with an outdated link will encounter an error message, prompting them to obtain a new, valid link. This ensures that access to your content remains secure and controlled. View the error message here: ![Password Change Error](https://a0a6.com/ppwsl/gate_error.png)

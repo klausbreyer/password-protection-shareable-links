@@ -32,11 +32,11 @@ function ppwsl_custom_box_html($post)
 	if (!isset($options['ppwsl_password_protect']) || !$options['ppwsl_password_protect']) {
 		?>
 		<p>
-			<?php _e('The plugin is not yet configured.', 'ppwsl'); ?>
+			<?php esc_html_e('The plugin is not yet configured.', 'ppwsl'); ?>
 		<p>
 		<p>
 			<a href="/wp-admin/options-general.php?page=password-protection-with-shareable-links">
-				<?php _e('Go to settings.', 'ppwsl'); ?>
+				<?php esc_html_e('Go to settings.', 'ppwsl'); ?>
 			</a>
 		</p>
 		<?php
@@ -45,26 +45,26 @@ function ppwsl_custom_box_html($post)
 
 	$encryptedPassword = ppwsl_encrypt($password, $salt);
 	$permalink = get_permalink($post->ID);
-	$separator = (parse_url($permalink, PHP_URL_QUERY) == NULL) ? '?' : '&';
+	$separator = (wp_parse_url($permalink, PHP_URL_QUERY) == NULL) ? '?' : '&';
 	$link = $permalink . $separator . 'password=' . urlencode($encryptedPassword);
 	?>
 
 	<div>
 		<p>
-			<?php _e('With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection.', 'ppwsl'); ?>
+			<?php esc_html_e('With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection.', 'ppwsl'); ?>
 		</p>
 		<p><strong>
-				<?php _e('Important:', 'ppwsl'); ?>
+				<?php esc_html_e('Important:', 'ppwsl'); ?>
 			</strong>
-			<?php _e('This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content.', 'ppwsl'); ?>
+			<?php esc_html_e('This link should only be shared with trusted individuals. Anyone who possesses this link will have access to all protected content.', 'ppwsl'); ?>
 		</p>
 
 		<label for="ppwsl_secure_link">
-			<?php _e('Your secure link:', 'ppwsl'); ?>
+			<?php esc_html_e('Your secure link:', 'ppwsl'); ?>
 		</label>
 		<input type="text" id="ppwsl_secure_link" value="<?php echo esc_attr($link); ?>" readonly style="width: 100%; margin-bottom: 10px;">
 		<button onclick="copyToClipboard()">
-			<?php _e('Copy', 'ppwsl'); ?>
+			<?php esc_html_e('Copy', 'ppwsl'); ?>
 		</button>
 	</div>
 

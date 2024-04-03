@@ -16,14 +16,14 @@ function ppwsl_settings_init()
 
 	add_settings_section(
 		'ppwsl_ppwsl_section',
-		__('Settings for Password Protection with Shareable Links', 'ppwsl'),
+		esc_html__('Settings for Password Protection with Shareable Links', 'ppwsl'),
 		'ppwsl_settings_section_callback',
 		'password-protection-with-shareable-links'
 	);
 
 	add_settings_field(
 		'ppwsl_password_protect',
-		__('Enable Password Protection', 'ppwsl'),
+		esc_html__('Enable Password Protection', 'ppwsl'),
 		'ppwsl_password_protect_render',
 		'password-protection-with-shareable-links',
 		'ppwsl_ppwsl_section'
@@ -31,7 +31,7 @@ function ppwsl_settings_init()
 
 	add_settings_field(
 		'ppwsl_text_field_0',
-		__('Password', 'ppwsl'),
+		esc_html__('Password', 'ppwsl'),
 		'ppwsl_text_field_0_render',
 		'password-protection-with-shareable-links',
 		'ppwsl_ppwsl_section'
@@ -54,7 +54,7 @@ function ppwsl_text_field_0_render()
 	}
 
 	?>
-	<input type='text' name='ppwsl_settings[ppwsl_text_field_0]' value='<?php echo $options['ppwsl_text_field_0']; ?>'>
+	<input type='text' name='ppwsl_settings[ppwsl_text_field_0]' value='<?php echo esc_attr($options['ppwsl_text_field_0']); ?>'>
 	<?php
 }
 
@@ -72,7 +72,7 @@ function ppwsl_options_page()
 }
 function ppwsl_settings_section_callback()
 {
-	echo __('Enter your settings for password protection here.', 'ppwsl');
+	esc_html_e('Enter your settings for password protection here.', 'ppwsl');
 }
 
 add_action('admin_notices', 'ppwsl_check_configuration');
@@ -92,10 +92,10 @@ function ppwsl_check_configuration()
 		?>
 		<div class="notice notice-warning is-dismissible">
 			<p><strong>
-					<?php _e('Password Protection with Shareable Links', 'ppwsl'); ?>
+					<?php esc_html_e('Password Protection with Shareable Links', 'ppwsl'); ?>
 				</strong>
-				<?php _e('is installed but not configured correctly. Please set a password and enable password protection in the', 'ppwsl'); ?> <a href="options-general.php?page=password-protection-with-shareable-links">
-					<?php _e('plugin settings', 'ppwsl'); ?>
+				<?php esc_html_e('is installed but not configured correctly. Please set a password and enable password protection in the', 'ppwsl'); ?> <a href="options-general.php?page=password-protection-with-shareable-links">
+					<?php esc_html_e('plugin settings', 'ppwsl'); ?>
 				</a>.
 			</p>
 		</div>
