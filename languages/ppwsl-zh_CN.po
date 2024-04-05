@@ -5,8 +5,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.4.1\n"
 
-msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
-msgstr "欢迎！您收到了一个特殊的访问链接，允许您直接访问其他方式需要密码保护的特定内容。此链接已包含以加密形式的必需密码。请在下面确认您希望登录并无缝访问内容的时长，无需再次输入密码。"
+msgid "Welcome!"
+msgstr "欢迎！"
+
+msgid "You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "您收到了一个特殊的访问链接，允许您直接访问其他方式需要密码保护的特定内容。此链接已包含以加密形式的必需密码。请在下面确认您希望登录并无缝访问内容的时长，无需再次输入密码。"
 
 msgid "How long would you like to stay logged in?"
 msgstr "您希望保持登录状态多久？"

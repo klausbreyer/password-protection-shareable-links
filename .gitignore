@@ -2,3 +2,5 @@ wordpress-stubs.php
 tailwindcss
 dist
 *.mo
+*.zip
+.DS_Store

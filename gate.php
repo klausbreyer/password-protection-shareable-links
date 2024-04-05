@@ -2,8 +2,14 @@
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
 
+
+
 function ppwsl_show_header()
 {
+	$plugin_file_path = plugin_dir_path(__FILE__) . 'password-protection-with-shareable-links.php';
+	$plugin_data = get_file_data($plugin_file_path, array('Version' => 'Version'), 'plugin');
+	$version = $plugin_data['Version'];
+
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -14,7 +20,7 @@ function ppwsl_show_header()
 		<title>
 			<?php esc_html_e('Password Protection', 'ppwsl'); ?>
 		</title>
-		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css'); ?>">
+		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css?ver=' . $version); ?>">
 	</head>
 
 	<body>
@@ -33,10 +39,14 @@ function ppwsl_show_password_form_with_notice()
 {
 	ppwsl_show_header();
 	?>
-	<div class="flex items-center justify-center min-h-screen px-6 py-12">
+	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
 		<div class="w-full max-w-md p-6 space-y-8 border border-gray-300 rounded-lg shadow-lg">
-			<p class="text-sm text-gray-700">
-				<?php esc_html_e('Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'ppwsl'); ?>
+			<p class="font-bold text-gray-700 text-md">
+				<?php esc_html_e('Welcome!', 'ppwsl'); ?>
+			</p>
+
+			<p class="text-gray-700 text-md">
+				<?php esc_html_e('You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'ppwsl'); ?>
 			</p>
 
 			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6">
@@ -59,7 +69,7 @@ function ppwsl_show_password_form_with_notice()
 						<option value="2592000">
 							<?php esc_html_e('1 month', 'ppwsl'); ?>
 						</option>
-						<option value="31536000">
+						<option value="31536000" selected>
 							<?php esc_html_e('1 year', 'ppwsl'); ?>
 						</option>
 					</select>
@@ -79,20 +89,25 @@ function ppwsl_show_password_form_with_notice()
 function ppwsl_show_password_form($error = false)
 {
 	ppwsl_show_header();
-	$selectedDuration = '3600';
-	// Get the previously selected value, default is 3600 seconds
+	$selectedDuration = '31536000';
+	// Get the previously selected value, default is 31536000 seconds
 	if (isset($_POST['ppwsl_duration']) && isset($_POST['ppwsl_nonce']) && wp_verify_nonce($_POST['ppwsl_nonce'], 'ppwsl_nonce')) {
 		$selectedDuration = $_POST['ppwsl_duration'];
 	}
 	?>
 	<!-- Start of the form, styled with Tailwind CSS -->
-	<div class="flex items-center justify-center min-h-screen px-4 py-12">
-		<div class="w-full max-w-md space-y-6">
-			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="px-8 pt-6 pb-8 mb-4 space-y-6 bg-white rounded shadow-md">
+	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
+		<div class="w-full max-w-md p-6 space-y-8 border border-gray-300 rounded-lg shadow-lg">
+			<p class="font-bold text-gray-700 text-md">
+				<?php esc_html_e('Welcome!', 'ppwsl'); ?>
+			</p>
+
+			<p class="text-gray-600 text-md">
+				<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'ppwsl'); ?>
+			</p>
+			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6 ">
 				<?php wp_nonce_field('ppwsl_nonce'); ?>
-				<p class="text-gray-600 text-md">
-					<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'ppwsl'); ?>
-				</p>
+
 				<?php if ($error): ?>
 					<?php ppwsl_alert(__("The entered password is incorrect. Please try again.", 'ppwsl')); ?>
 				<?php endif; ?>
@@ -158,7 +173,7 @@ function ppwsl_alert_page($text)
 {
 	ppwsl_show_header();
 	?>
-	<div class="flex items-center justify-center min-h-screen px-4 py-12">
+	<div class="flex items-center justify-center min-h-screen px-4 py-6">
 		<div class="w-full max-w-xl space-y-6">
 
 			<?php ppwsl_alert($text); ?>

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Password Protection with Shareable Links
  * Description: Password protection with seamless sharing and secure link generation.
- * Version: 1.0
+ * Version: 1.1
  * Author: klausbreyer
  */
 
@@ -19,16 +19,16 @@ if (!defined('ABSPATH'))
 register_activation_hook(__FILE__, 'ppwsl_activate');
 function ppwsl_activate()
 {
-    // Prüfen, ob bereits ein Salt gespeichert ist
+    // Check if a salt is already stored
     if (!get_option('ppwsl_salt')) {
-        // Ein zufälliges Salt generieren
+        // Generate a random salt
         $salt = bin2hex(openssl_random_pseudo_bytes(16));
-        // Das Salt in den WordPress-Optionen speichern
+        // Store the salt in WordPress options
         update_option('ppwsl_salt', $salt);
     }
 }
 
-// Laden Sie Ihre Textdomain im init Hook
+// Load your text domain in the init hook
 add_action('init', 'ppwsl_load_textdomain');
 function ppwsl_load_textdomain()
 {
@@ -36,13 +36,18 @@ function ppwsl_load_textdomain()
 }
 
 
-
-
 add_action('template_redirect', 'ppwsl_protect_content');
 function ppwsl_protect_content()
 {
-    if (is_admin() || current_user_can('manage_options'))
+
+    // Disable caching HTTP headers to ensure that the password gate is displayed when it should be (e.g., after changing the password) and that the correct content is displayed when it shouldn't.
+    header("Cache-Control: no-cache, must-revalidate, max-age=0");
+    header("Pragma: no-cache");
+    header("Expires: Wed, 11 Jan 1984 05:00:00 GMT");
+
+    if (is_admin() || current_user_can('manage_options')) {
         return;
+    }
 
     $options = get_option('ppwsl_settings');
     if (!is_array($options)) {
@@ -50,7 +55,7 @@ function ppwsl_protect_content()
     }
 
     if (!isset($options['ppwsl_password_protect']) || !$options['ppwsl_password_protect']) {
-        return; // Wenn nicht aktiviert, führen Sie keine weiteren Aktionen aus
+        return; // If not enabled, do not perform any further actions
     }
 
     $savedPassword = $options['ppwsl_text_field_0'];
@@ -73,9 +78,9 @@ function ppwsl_protect_content()
     if (isset($_POST['ppwsl_password']) && wp_verify_nonce($_POST['_wpnonce'], 'ppwsl_nonce')) {
         $passFromUser = ppwsl_encrypt($_POST['ppwsl_password'], $salt);
         if ($passFromUser === ppwsl_encrypt($savedPassword, $salt)) {
-            $duration = isset($_POST['ppwsl_duration']) ? (int) $_POST['ppwsl_duration'] : 3600; // Standardmäßig 1 Stunde
+            $duration = isset($_POST['ppwsl_duration']) ? (int) $_POST['ppwsl_duration'] : 3600; // Default is 1 hour
             setcookie('ppwsl_pass', $passFromUser, time() + $duration, COOKIEPATH, COOKIE_DOMAIN);
-            wp_redirect(remove_query_arg(array('pass'))); // URL bereinigen
+            wp_redirect(remove_query_arg(array('pass'))); // Clean up URL
         } else {
             ppwsl_show_password_form(true);
             exit;
@@ -87,13 +92,13 @@ function ppwsl_protect_content()
         $encryptedPassword = $_GET['password'];
         $decryptedPassword = ppwsl_decrypt($encryptedPassword, $salt);
 
-        // Vergleichen Sie das entschlüsselte Passwort mit dem gespeicherten Passwort
+        // Compare the decrypted password with the saved password
         if ($decryptedPassword === $savedPassword) {
-            // Wenn das Passwort übereinstimmt, zeigen Sie das Bestätigungsformular an
+            // If the password matches, display the confirmation form
             ppwsl_show_password_form_with_notice();
             exit;
         } else {
-            // Wenn das Passwort nicht übereinstimmt, zeigen Sie eine Fehlermeldung an
+            // If the password does not match, display an error message
             ppwsl_password_confirm_alert();
             exit;
         }
@@ -105,4 +110,3 @@ function ppwsl_protect_content()
         exit;
     }
 }
-

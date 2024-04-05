@@ -5,8 +5,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.4.1\n"
 
-msgid "Welcome! You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
-msgstr "Ласкаво просимо! Ви отримали спеціальне посилання для доступу, яке дозволяє вам безпосередньо доступитися до певного контенту, що інакше захищено паролем. Це посилання вже містить необхідний пароль у зашифрованій формі. Будь ласка, підтвердіть нижче, як довго ви хочете залишатися в системі, щоб безперебійно отримувати доступ до контенту без необхідності вводити пароль знову."
+msgid "Welcome!"
+msgstr "Ласкаво просимо!"
+
+msgid "You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again."
+msgstr "Ви отримали спеціальне посилання для доступу, яке дозволяє вам безпосередньо доступитися до певного контенту, що інакше захищено паролем. Це посилання вже містить необхідний пароль у зашифрованій формі. Будь ласка, підтвердіть нижче, як довго ви хочете залишатися в системі, щоб безперебійно отримувати доступ до контенту без необхідності вводити пароль знову."
 
 msgid "How long would you like to stay logged in?"
 msgstr "Як довго ви хочете залишатися в системі?"

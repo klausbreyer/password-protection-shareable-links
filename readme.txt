@@ -5,7 +5,7 @@ Tags: password, protection, sharing
 Requires at least: 5.2
 Tested up to: 6.5
 Requires PHP: 7.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,14 @@ This plugin allows you to protect your WordPress content with a password and sha
 
 == Description ==
 
-Password Protection with Shareable Links  is a WordPress plugin designed to enhance the security of your content. With PPWSL, you can protect any post, page, or custom content type with a password. Additionally, the plugin generates encrypted links that provide direct access to your protected content, bypassing the need for manual password entry.
+Password Protection with Shareable Links is a WordPress plugin designed to enhance the security of your content. With PPWSL, you can protect any post, page, or custom content type with a password. Additionally, the plugin generates encrypted links that provide direct access to your protected content, bypassing the need for manual password entry.
+
+To ensure functionality and security, the plugin disables caching on protected content, making sure the password gate displays correctly and updated content is served as expected.
+
+Key Features:
+- The wp-admin page is not protected and remains accessible for login at all times.
+- Logged-in admins can always view all normal pages without restrictions.
+- Feed access is also restricted, aligning with the intention to prevent unauthorized external access to the site's content.
 
 == Installation ==
 
@@ -41,3 +48,27 @@ Yes, users will be informed that they are accessing content through a secure lin
 = What happens if I change the password? =
 
 Should the password be changed, users attempting to access content with an outdated link will encounter an error message, prompting them to obtain a new, valid link. This ensures that access to your content remains secure and controlled. View the error message here: ![Password Change Error](https://a0a6.com/ppwsl/gate_error.png)
+
+= Is the feed accessible with the plugin activated? =
+
+No, the feed is also not accessible, aligning with the intention to prevent unauthorized external access. This ensures that content is secured against unintended distribution.
+
+== Translations ==
+
+Password Protection with Shareable Links is available in the following languages:
+
+- 🇩🇪 German (de_DE)
+- 🇪🇸 Spanish (es_ES)
+- 🇫🇷 French (fr_FR)
+- 🇮🇹 Italian (it_IT)
+- 🇵🇹 Portuguese (pt_PT)
+- 🇺🇦 Ukrainian (uk)
+- 🇨🇳 Chinese (zh_CN)
+
+== Changelog ==
+
+= 1.1 =
+* Added functionality to disable caching for content protected by the plugin to ensure correct display of the password gate and up-to-date content delivery.
+
+= 1.0 =
+* Initial release.

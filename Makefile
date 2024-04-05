@@ -29,3 +29,8 @@ convert-po-mo:
 build:
 	make tailwind-build
 	make convert-po-mo
+
+
+package:
+	rm -f $$(basename $$(pwd)).zip
+	zip -r $$(basename $$(pwd)).zip ./* -x "*wordpress-stubs.php" -x "*tailwindcss" -x "*password-protection-with-shareable-links.zip" -x "*.git*" -x "*Makefile" -x "*composer.json" -x "*composer.lock" -x "*package-lock.json" -x "*package.json" -x "*node_modules*" -x "tailwind.config.js" -x "styles.css" -x ".gitignore"
