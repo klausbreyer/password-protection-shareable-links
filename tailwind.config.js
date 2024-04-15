@@ -7,5 +7,5 @@ module.exports = {
     },
   },
   plugins: [],
-  //   prefix: "ppwsl-",
+  //   prefix: "passpass-",
 };

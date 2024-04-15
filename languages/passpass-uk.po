@@ -68,8 +68,8 @@ msgstr "Ваш безпечний посилання:"
 msgid "Copy"
 msgstr "Копіювати"
 
-msgid "Settings for Password Protection with Shareable Links"
-msgstr "Налаштування захисту паролем з посиланнями для спільного доступу"
+msgid "Settings for PassPass - Password Protection with Shareable Links"
+msgstr "Налаштування для PassPass - Захист паролем з посиланнями для спільного доступу"
 
 msgid "Enable Password Protection"
 msgstr "Увімкнути захист паролем"

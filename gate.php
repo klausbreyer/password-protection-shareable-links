@@ -4,9 +4,9 @@ if (!defined('ABSPATH'))
 
 
 
-function ppwsl_show_header()
+function passpass_show_header()
 {
-	$plugin_file_path = plugin_dir_path(__FILE__) . 'password-protection-with-shareable-links.php';
+	$plugin_file_path = plugin_dir_path(__FILE__) . 'passpass.php';
 	$plugin_data = get_file_data($plugin_file_path, array('Version' => 'Version'), 'plugin');
 	$version = $plugin_data['Version'];
 
@@ -18,7 +18,7 @@ function ppwsl_show_header()
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			<?php esc_html_e('Password Protection', 'ppwsl'); ?>
+			<?php esc_html_e('Password Protection', 'passpass'); ?>
 		</title>
 		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css?ver=' . $version); ?>">
 	</head>
@@ -27,7 +27,7 @@ function ppwsl_show_header()
 		<?php
 }
 
-function ppwsl_show_footer()
+function passpass_show_footer()
 {
 	?>
 	</body>
@@ -35,121 +35,121 @@ function ppwsl_show_footer()
 	</html>
 	<?php
 }
-function ppwsl_show_password_form_with_notice()
+function passpass_show_password_form_with_notice()
 {
-	ppwsl_show_header();
+	passpass_show_header();
 	?>
 	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
 		<div class="w-full max-w-md p-6 space-y-8 border border-gray-300 rounded-lg shadow-lg">
 			<p class="font-bold text-gray-700 text-md">
-				<?php esc_html_e('Welcome!', 'ppwsl'); ?>
+				<?php esc_html_e('Welcome!', 'passpass'); ?>
 			</p>
 
 			<p class="text-gray-700 text-md">
-				<?php esc_html_e('You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'ppwsl'); ?>
+				<?php esc_html_e('You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'passpass'); ?>
 			</p>
 
 			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6">
-				<?php wp_nonce_field('ppwsl_nonce'); ?>
-				<input type="hidden" name="ppwsl_password_confirm" value="1"> <!-- Hidden field for form submission confirmation -->
+				<?php wp_nonce_field('passpass_nonce'); ?>
+				<input type="hidden" name="passpass_password_confirm" value="1"> <!-- Hidden field for form submission confirmation -->
 				<div class="w-auto">
-					<label for="ppwsl_duration" class="block text-sm font-medium text-gray-700">
-						<?php esc_html_e('How long would you like to stay logged in?', 'ppwsl'); ?>
+					<label for="passpass_duration" class="block text-sm font-medium text-gray-700">
+						<?php esc_html_e('How long would you like to stay logged in?', 'passpass'); ?>
 					</label>
-					<select id="ppwsl_duration" name="ppwsl_duration" class="block p-1 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+					<select id="passpass_duration" name="passpass_duration" class="block p-1 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
 						<option value="3600">
-							<?php esc_html_e('1 hour', 'ppwsl'); ?>
+							<?php esc_html_e('1 hour', 'passpass'); ?>
 						</option>
 						<option value="86400">
-							<?php esc_html_e('1 day', 'ppwsl'); ?>
+							<?php esc_html_e('1 day', 'passpass'); ?>
 						</option>
 						<option value="604800">
-							<?php esc_html_e('1 week', 'ppwsl'); ?>
+							<?php esc_html_e('1 week', 'passpass'); ?>
 						</option>
 						<option value="2592000">
-							<?php esc_html_e('1 month', 'ppwsl'); ?>
+							<?php esc_html_e('1 month', 'passpass'); ?>
 						</option>
 						<option value="31536000" selected>
-							<?php esc_html_e('1 year', 'ppwsl'); ?>
+							<?php esc_html_e('1 year', 'passpass'); ?>
 						</option>
 					</select>
 				</div>
 				<div>
 					<button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-						<?php esc_html_e('Confirm Access', 'ppwsl'); ?>
+						<?php esc_html_e('Confirm Access', 'passpass'); ?>
 					</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<?php
-	ppwsl_show_footer();
+	passpass_show_footer();
 }
 
-function ppwsl_show_password_form($error = false)
+function passpass_show_password_form($error = false)
 {
-	ppwsl_show_header();
+	passpass_show_header();
 	$selectedDuration = '31536000';
 	// Get the previously selected value, default is 31536000 seconds
-	if (isset($_POST['ppwsl_duration']) && isset($_POST['ppwsl_nonce']) && wp_verify_nonce($_POST['ppwsl_nonce'], 'ppwsl_nonce')) {
-		$selectedDuration = $_POST['ppwsl_duration'];
+	if (isset($_POST['passpass_duration']) && isset($_POST['passpass_nonce']) && wp_verify_nonce($_POST['passpass_nonce'], 'passpass_nonce')) {
+		$selectedDuration = $_POST['passpass_duration'];
 	}
 	?>
 	<!-- Start of the form, styled with Tailwind CSS -->
 	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
 		<div class="w-full max-w-md p-6 space-y-8 border border-gray-300 rounded-lg shadow-lg">
 			<p class="font-bold text-gray-700 text-md">
-				<?php esc_html_e('Welcome!', 'ppwsl'); ?>
+				<?php esc_html_e('Welcome!', 'passpass'); ?>
 			</p>
 
 			<p class="text-gray-600 text-md">
-				<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'ppwsl'); ?>
+				<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'passpass'); ?>
 			</p>
 			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6 ">
-				<?php wp_nonce_field('ppwsl_nonce'); ?>
+				<?php wp_nonce_field('passpass_nonce'); ?>
 
 				<?php if ($error): ?>
-					<?php ppwsl_alert(__("The entered password is incorrect. Please try again.", 'ppwsl')); ?>
+					<?php passpass_alert(__("The entered password is incorrect. Please try again.", 'passpass')); ?>
 				<?php endif; ?>
 				<div>
-					<label for="ppwsl_password" class="block text-sm font-medium text-gray-700">
-						<?php esc_html_e('Please enter the password:', 'ppwsl'); ?>
+					<label for="passpass_password" class="block text-sm font-medium text-gray-700">
+						<?php esc_html_e('Please enter the password:', 'passpass'); ?>
 					</label>
-					<input type="password" id="ppwsl_password" name="ppwsl_password" class="block w-full mt-1 border-b-2 border-gray-700 rounded-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+					<input type="password" id="passpass_password" name="passpass_password" class="block w-full mt-1 border-b-2 border-gray-700 rounded-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
 				</div>
 				<div class="w-auto">
-					<label for="ppwsl_duration" class="block text-sm font-medium text-gray-700">
-						<?php esc_html_e('How long would you like to stay logged in?', 'ppwsl'); ?>
+					<label for="passpass_duration" class="block text-sm font-medium text-gray-700">
+						<?php esc_html_e('How long would you like to stay logged in?', 'passpass'); ?>
 					</label>
-					<select id="ppwsl_duration" name="ppwsl_duration" class="block px-2 py-1 mt-1 border-gray-700 rounded-sm shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+					<select id="passpass_duration" name="passpass_duration" class="block px-2 py-1 mt-1 border-gray-700 rounded-sm shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
 						<option value="3600" <?php echo $selectedDuration == '3600' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 hour', 'ppwsl'); ?>
+							<?php esc_html_e('1 hour', 'passpass'); ?>
 						</option>
 						<option value="86400" <?php echo $selectedDuration == '86400' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 day', 'ppwsl'); ?>
+							<?php esc_html_e('1 day', 'passpass'); ?>
 						</option>
 						<option value="604800" <?php echo $selectedDuration == '604800' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 week', 'ppwsl'); ?>
+							<?php esc_html_e('1 week', 'passpass'); ?>
 						</option>
 						<option value="2592000" <?php echo $selectedDuration == '2592000' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 month', 'ppwsl'); ?>
+							<?php esc_html_e('1 month', 'passpass'); ?>
 						</option>
 						<option value="31536000" <?php echo $selectedDuration == '31536000' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 year', 'ppwsl'); ?>
+							<?php esc_html_e('1 year', 'passpass'); ?>
 						</option>
 					</select>
 				</div>
-				<input type="submit" value="<?php esc_html_e('Access', 'ppwsl'); ?>" class="flex justify-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+				<input type="submit" value="<?php esc_html_e('Access', 'passpass'); ?>" class="flex justify-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
 			</form>
 		</div>
 	</div>
 	<?php
-	ppwsl_show_footer();
+	passpass_show_footer();
 }
 
 
 
-function ppwsl_alert($text)
+function passpass_alert($text)
 {
 	?>
 	<div class="p-4 rounded-md bg-red-50">
@@ -169,23 +169,23 @@ function ppwsl_alert($text)
 	<?php
 }
 
-function ppwsl_alert_page($text)
+function passpass_alert_page($text)
 {
-	ppwsl_show_header();
+	passpass_show_header();
 	?>
 	<div class="flex items-center justify-center min-h-screen px-4 py-6">
 		<div class="w-full max-w-xl space-y-6">
 
-			<?php ppwsl_alert($text); ?>
+			<?php passpass_alert($text); ?>
 		</div>
 	</div>
 	<?php
-	ppwsl_show_footer();
+	passpass_show_footer();
 }
 
 // Your i18n capable function
-function ppwsl_password_confirm_alert()
+function passpass_password_confirm_alert()
 {
-	ppwsl_alert_page(esc_html__("The password in your link is outdated or incorrect. Please request a new link or contact the website administrator.", 'ppwsl'));
+	passpass_alert_page(esc_html__("The password in your link is outdated or incorrect. Please request a new link or contact the website administrator.", 'passpass'));
 }
 
