@@ -1,15 +1,14 @@
 <?php
+// phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
+
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
-
-
 
 function ppsl_show_header()
 {
 	$plugin_file_path = plugin_dir_path(__FILE__) . 'password-protection-shareable-links.php';
 	$plugin_data = get_file_data($plugin_file_path, array('Version' => 'Version'), 'plugin');
 	$version = $plugin_data['Version'];
-
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -20,7 +19,7 @@ function ppsl_show_header()
 		<title>
 			<?php esc_html_e('Password Protection', 'password-protection-shareable-links'); ?>
 		</title>
-		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css?ver=' . $version); ?>">
+		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css?ver=' . esc_attr($version)); ?>">
 	</head>
 
 	<body>
@@ -35,6 +34,7 @@ function ppsl_show_footer()
 	</html>
 	<?php
 }
+
 function ppsl_show_password_form_with_notice()
 {
 	ppsl_show_header();
@@ -49,7 +49,7 @@ function ppsl_show_password_form_with_notice()
 				<?php esc_html_e('You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'password-protection-shareable-links'); ?>
 			</p>
 
-			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6">
+			<form action="<?php echo esc_url(isset($_SERVER['REQUEST_URI']) ? sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])) : ''); ?>" method="post" class="space-y-6">
 				<?php wp_nonce_field('ppsl_nonce'); ?>
 				<input type="hidden" name="ppsl_password_confirm" value="1"> <!-- Hidden field for form submission confirmation -->
 				<div class="w-auto">
@@ -91,8 +91,8 @@ function ppsl_show_password_form($error = false)
 	ppsl_show_header();
 	$selectedDuration = '31536000';
 	// Get the previously selected value, default is 31536000 seconds
-	if (isset($_POST['ppsl_duration']) && isset($_POST['ppsl_nonce']) && wp_verify_nonce($_POST['ppsl_nonce'], 'ppsl_nonce')) {
-		$selectedDuration = $_POST['ppsl_duration'];
+	if (isset($_POST['ppsl_duration']) && isset($_POST['ppsl_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ppsl_nonce'])), 'ppsl_nonce')) {
+		$selectedDuration = sanitize_text_field(wp_unslash($_POST['ppsl_duration']));
 	}
 	?>
 	<!-- Start of the form, styled with Tailwind CSS -->
@@ -105,7 +105,7 @@ function ppsl_show_password_form($error = false)
 			<p class="text-gray-600 text-md">
 				<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'password-protection-shareable-links'); ?>
 			</p>
-			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6 ">
+			<form action="<?php echo esc_url(isset($_SERVER['REQUEST_URI']) ? sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])) : ''); ?>" method="post" class="space-y-6 ">
 				<?php wp_nonce_field('ppsl_nonce'); ?>
 
 				<?php if ($error): ?>
@@ -147,8 +147,6 @@ function ppsl_show_password_form($error = false)
 	ppsl_show_footer();
 }
 
-
-
 function ppsl_alert($text)
 {
 	?>
@@ -188,4 +186,3 @@ function ppsl_password_confirm_alert()
 {
 	ppsl_alert_page(esc_html__("The password in your link is outdated or incorrect. Please request a new link or contact the website administrator.", 'password-protection-shareable-links'));
 }
-
