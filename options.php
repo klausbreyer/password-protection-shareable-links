@@ -7,33 +7,33 @@ add_action('admin_init', 'ppsl_settings_init');
 
 function ppsl_add_admin_menu()
 {
-	add_options_page('Password Protection with Shareable Links', 'Password Protection with Shareable Links', 'manage_options', 'ppsl', 'ppsl_options_page');
+	add_options_page('Password Protection with Shareable Links', 'Password Protection with Shareable Links', 'manage_options', 'password-protection-shareable-links', 'ppsl_options_page');
 }
 
 function ppsl_settings_init()
 {
-	register_setting('ppsl', 'ppsl_settings');
+	register_setting('password-protection-shareable-links', 'ppsl_settings');
 
 	add_settings_section(
 		'ppsl_ppsl_section',
-		esc_html__('Settings Password Protection with Shareable Links', 'ppsl'),
+		esc_html__('Settings Password Protection with Shareable Links', 'password-protection-shareable-links'),
 		'ppsl_settings_section_callback',
-		'ppsl'
+		'password-protection-shareable-links'
 	);
 
 	add_settings_field(
 		'ppsl_password_protect',
-		esc_html__('Enable Password Protection', 'ppsl'),
+		esc_html__('Enable Password Protection', 'password-protection-shareable-links'),
 		'ppsl_password_protect_render',
-		'ppsl',
+		'password-protection-shareable-links',
 		'ppsl_ppsl_section'
 	);
 
 	add_settings_field(
 		'ppsl_text_field_0',
-		esc_html__('Password', 'ppsl'),
+		esc_html__('Password', 'password-protection-shareable-links'),
 		'ppsl_text_field_0_render',
-		'ppsl',
+		'password-protection-shareable-links',
 		'ppsl_ppsl_section'
 	);
 }
@@ -63,8 +63,8 @@ function ppsl_options_page()
 	?>
 	<form action='options.php' method='post'>
 		<?php
-		settings_fields('ppsl');
-		do_settings_sections('ppsl');
+		settings_fields('password-protection-shareable-links');
+		do_settings_sections('password-protection-shareable-links');
 		submit_button();
 		?>
 	</form>
@@ -72,7 +72,7 @@ function ppsl_options_page()
 }
 function ppsl_settings_section_callback()
 {
-	esc_html_e('Enter your settings for password protection here.', 'ppsl');
+	esc_html_e('Enter your settings for password protection here.', 'password-protection-shareable-links');
 }
 
 add_action('admin_notices', 'ppsl_check_configuration');
@@ -92,10 +92,10 @@ function ppsl_check_configuration()
 		?>
 		<div class="notice notice-warning is-dismissible">
 			<p><strong>
-					<?php esc_html_e('Password Protection with Shareable Links', 'ppsl'); ?>
+					<?php esc_html_e('Password Protection with Shareable Links', 'password-protection-shareable-links'); ?>
 				</strong>
-				<?php esc_html_e('is installed but not configured correctly. Please set a password and enable password protection in the', 'ppsl'); ?> <a href="options-general.php?page=ppsl">
-					<?php esc_html_e('plugin settings', 'ppsl'); ?>
+				<?php esc_html_e('is installed but not configured correctly. Please set a password and enable password protection in the', 'password-protection-shareable-links'); ?> <a href="options-general.php?page=password-protection-shareable-links">
+					<?php esc_html_e('plugin settings', 'password-protection-shareable-links'); ?>
 				</a>.
 			</p>
 		</div>

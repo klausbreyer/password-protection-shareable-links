@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Password Protection with Shareable Links
  * Description: Password protection with seamless sharing and secure link generation.
- * Version: 1.2
+ * Version: 1.2.1
  * Author: klausbreyer
- * Text Domain: ppsl
+ * Text Domain: password-protection-shareable-links
  * Domain Path: /languages
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -36,7 +36,7 @@ function ppsl_activate()
 add_action('init', 'ppsl_load_textdomain');
 function ppsl_load_textdomain()
 {
-    load_plugin_textdomain('ppsl', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+    load_plugin_textdomain('password-protection-shareable-links', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
 }
 

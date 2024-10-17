@@ -18,7 +18,7 @@ function ppsl_show_header()
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			<?php esc_html_e('Password Protection', 'ppsl'); ?>
+			<?php esc_html_e('Password Protection', 'password-protection-shareable-links'); ?>
 		</title>
 		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css?ver=' . $version); ?>">
 	</head>
@@ -42,11 +42,11 @@ function ppsl_show_password_form_with_notice()
 	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
 		<div class="w-full max-w-md p-6 space-y-8 border border-gray-300 rounded-lg shadow-lg">
 			<p class="font-bold text-gray-700 text-md">
-				<?php esc_html_e('Welcome!', 'ppsl'); ?>
+				<?php esc_html_e('Welcome!', 'password-protection-shareable-links'); ?>
 			</p>
 
 			<p class="text-gray-700 text-md">
-				<?php esc_html_e('You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'ppsl'); ?>
+				<?php esc_html_e('You have received a special access link that allows you to directly access specific content that is otherwise protected by a password. This link already contains the required password in encrypted form. Please confirm below how long you would like to stay logged in to seamlessly access the content without having to enter the password again.', 'password-protection-shareable-links'); ?>
 			</p>
 
 			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6">
@@ -54,29 +54,29 @@ function ppsl_show_password_form_with_notice()
 				<input type="hidden" name="ppsl_password_confirm" value="1"> <!-- Hidden field for form submission confirmation -->
 				<div class="w-auto">
 					<label for="ppsl_duration" class="block text-sm font-medium text-gray-700">
-						<?php esc_html_e('How long would you like to stay logged in?', 'ppsl'); ?>
+						<?php esc_html_e('How long would you like to stay logged in?', 'password-protection-shareable-links'); ?>
 					</label>
 					<select id="ppsl_duration" name="ppsl_duration" class="block p-1 mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
 						<option value="3600">
-							<?php esc_html_e('1 hour', 'ppsl'); ?>
+							<?php esc_html_e('1 hour', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="86400">
-							<?php esc_html_e('1 day', 'ppsl'); ?>
+							<?php esc_html_e('1 day', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="604800">
-							<?php esc_html_e('1 week', 'ppsl'); ?>
+							<?php esc_html_e('1 week', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="2592000">
-							<?php esc_html_e('1 month', 'ppsl'); ?>
+							<?php esc_html_e('1 month', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="31536000" selected>
-							<?php esc_html_e('1 year', 'ppsl'); ?>
+							<?php esc_html_e('1 year', 'password-protection-shareable-links'); ?>
 						</option>
 					</select>
 				</div>
 				<div>
 					<button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-						<?php esc_html_e('Confirm Access', 'ppsl'); ?>
+						<?php esc_html_e('Confirm Access', 'password-protection-shareable-links'); ?>
 					</button>
 				</div>
 			</form>
@@ -99,47 +99,47 @@ function ppsl_show_password_form($error = false)
 	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
 		<div class="w-full max-w-md p-6 space-y-8 border border-gray-300 rounded-lg shadow-lg">
 			<p class="font-bold text-gray-700 text-md">
-				<?php esc_html_e('Welcome!', 'ppsl'); ?>
+				<?php esc_html_e('Welcome!', 'password-protection-shareable-links'); ?>
 			</p>
 
 			<p class="text-gray-600 text-md">
-				<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'ppsl'); ?>
+				<?php esc_html_e('You are about to enter a password-protected page. To access the protected content, you need to enter the correct password. Please also select how long you want to access the content without entering the password again.', 'password-protection-shareable-links'); ?>
 			</p>
 			<form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post" class="space-y-6 ">
 				<?php wp_nonce_field('ppsl_nonce'); ?>
 
 				<?php if ($error): ?>
-					<?php ppsl_alert(__("The entered password is incorrect. Please try again.", 'ppsl')); ?>
+					<?php ppsl_alert(__("The entered password is incorrect. Please try again.", 'password-protection-shareable-links')); ?>
 				<?php endif; ?>
 				<div>
 					<label for="ppsl_password" class="block text-sm font-medium text-gray-700">
-						<?php esc_html_e('Please enter the password:', 'ppsl'); ?>
+						<?php esc_html_e('Please enter the password:', 'password-protection-shareable-links'); ?>
 					</label>
 					<input type="password" id="ppsl_password" name="ppsl_password" class="block w-full mt-1 border-b-2 border-gray-700 rounded-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
 				</div>
 				<div class="w-auto">
 					<label for="ppsl_duration" class="block text-sm font-medium text-gray-700">
-						<?php esc_html_e('How long would you like to stay logged in?', 'ppsl'); ?>
+						<?php esc_html_e('How long would you like to stay logged in?', 'password-protection-shareable-links'); ?>
 					</label>
 					<select id="ppsl_duration" name="ppsl_duration" class="block px-2 py-1 mt-1 border-gray-700 rounded-sm shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
 						<option value="3600" <?php echo $selectedDuration == '3600' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 hour', 'ppsl'); ?>
+							<?php esc_html_e('1 hour', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="86400" <?php echo $selectedDuration == '86400' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 day', 'ppsl'); ?>
+							<?php esc_html_e('1 day', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="604800" <?php echo $selectedDuration == '604800' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 week', 'ppsl'); ?>
+							<?php esc_html_e('1 week', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="2592000" <?php echo $selectedDuration == '2592000' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 month', 'ppsl'); ?>
+							<?php esc_html_e('1 month', 'password-protection-shareable-links'); ?>
 						</option>
 						<option value="31536000" <?php echo $selectedDuration == '31536000' ? 'selected' : ''; ?>>
-							<?php esc_html_e('1 year', 'ppsl'); ?>
+							<?php esc_html_e('1 year', 'password-protection-shareable-links'); ?>
 						</option>
 					</select>
 				</div>
-				<input type="submit" value="<?php esc_html_e('Access', 'ppsl'); ?>" class="flex justify-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+				<input type="submit" value="<?php esc_html_e('Access', 'password-protection-shareable-links'); ?>" class="flex justify-center px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
 			</form>
 		</div>
 	</div>
@@ -186,6 +186,6 @@ function ppsl_alert_page($text)
 // Your i18n capable function
 function ppsl_password_confirm_alert()
 {
-	ppsl_alert_page(esc_html__("The password in your link is outdated or incorrect. Please request a new link or contact the website administrator.", 'ppsl'));
+	ppsl_alert_page(esc_html__("The password in your link is outdated or incorrect. Please request a new link or contact the website administrator.", 'password-protection-shareable-links'));
 }
 
