@@ -68,7 +68,7 @@ msgstr "您的安全链接："
 msgid "Copy"
 msgstr "复制"
 
-msgid "Settings for PassPass - Password Protection with Shareable Links"
+msgid "Settings Password Protection with Shareable Links"
 msgstr "可共享链接的密码保护设置"
 
 msgid "Enable Password Protection"

@@ -68,7 +68,7 @@ msgstr "O seu link seguro:"
 msgid "Copy"
 msgstr "Copiar"
 
-msgid "Settings for PassPass - Password Protection with Shareable Links"
+msgid "Settings Password Protection with Shareable Links"
 msgstr "Configurações para Proteção de Senha com Links Partilháveis"
 
 msgid "Enable Password Protection"

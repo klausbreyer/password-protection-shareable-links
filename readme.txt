@@ -1,11 +1,11 @@
 
-=== PassPass - Password Protection with Shareable Links ===
+=== Password Protection with Shareable Links ===
 Contributors: klausbreyer
 Tags: password, protection, sharing
 Requires at least: 5.2
-Tested up to: 6.5
+Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ This plugin allows you to protect your WordPress content with a password and sha
 
 == Description ==
 
-PassPass is a WordPress plugin designed to enhance the security of your content. With PassPass, you can protect any post, page, or custom content type with a password. Additionally, the plugin generates encrypted links that provide direct access to your protected content, bypassing the need for manual password entry.
+Password Protection with Shareable Links is a WordPress plugin designed to enhance the security of your content. With Password Protection with Shareable Links, you can protect any post, page, or custom content type with a password. Additionally, the plugin generates encrypted links that provide direct access to your protected content, bypassing the need for manual password entry.
 
 To ensure functionality and security, the plugin disables caching on protected content, making sure the password gate displays correctly and updated content is served as expected.
 
@@ -24,7 +24,7 @@ Key Features:
 
 == Installation ==
 
-1. Upload the `passpass` folder to the `/wp-content/plugins/` directory, or install the plugin directly through the WordPress plugins screen.
+1. Upload the `password-protection-shareable-links` folder to the `/wp-content/plugins/` directory, or install the plugin directly through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 
 == Frequently Asked Questions ==
@@ -55,7 +55,7 @@ No, the feed is also not accessible, aligning with the intention to prevent unau
 
 == Translations ==
 
-PassPass is available in the following languages:
+Password Protection with Shareable Links is available in the following languages:
 
 - 🇩🇪 German (de_DE)
 - 🇪🇸 Spanish (es_ES)
