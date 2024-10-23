@@ -3,12 +3,31 @@
 
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
+function ppsl_enqueue_assets()
+{
+	if (ppsl_is_password_page()) {
+		// Dequeue alle anderen Styles und Skripte
+		global $wp_styles, $wp_scripts;
+		$wp_styles->queue = array();
+		$wp_scripts->queue = array();
+
+		// Enqueue Ihr eigenes Stylesheet
+		wp_enqueue_style('ppsl-style', plugin_dir_url(__FILE__) . 'dist/styles.css', array(), '1.0');
+
+		// Falls Sie Skripte benötigen, können Sie diese hier ebenfalls enqueued
+		// wp_enqueue_script( 'ppsl-script', plugin_dir_url( __FILE__ ) . 'dist/script.js', array(), '1.0', true );
+	}
+}
+add_action('wp_enqueue_scripts', 'ppsl_enqueue_assets', 9999);
+
+function ppsl_is_password_page()
+{
+	global $ppsl_is_password_page;
+	return isset($ppsl_is_password_page) && $ppsl_is_password_page;
+}
 
 function ppsl_show_header()
 {
-	$plugin_file_path = plugin_dir_path(__FILE__) . 'password-protection-shareable-links.php';
-	$plugin_data = get_file_data($plugin_file_path, array('Version' => 'Version'), 'plugin');
-	$version = $plugin_data['Version'];
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -16,10 +35,8 @@ function ppsl_show_header()
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>
-			<?php esc_html_e('Password Protection', 'password-protection-shareable-links'); ?>
-		</title>
-		<link rel="stylesheet" href="<?php echo esc_url(plugin_dir_url(__FILE__) . 'dist/styles.css?ver=' . esc_attr($version)); ?>">
+		<title><?php esc_html_e('Password Protection', 'password-protection-shareable-links'); ?></title>
+		<?php wp_head(); ?>
 	</head>
 
 	<body>
@@ -29,6 +46,7 @@ function ppsl_show_header()
 function ppsl_show_footer()
 {
 	?>
+		<?php wp_footer(); ?>
 	</body>
 
 	</html>
@@ -37,6 +55,9 @@ function ppsl_show_footer()
 
 function ppsl_show_password_form_with_notice()
 {
+	global $ppsl_is_password_page;
+	$ppsl_is_password_page = true;
+
 	ppsl_show_header();
 	?>
 	<div class="flex items-center justify-center px-6 py-6 md:min-h-screen">
@@ -88,6 +109,9 @@ function ppsl_show_password_form_with_notice()
 
 function ppsl_show_password_form($error = false)
 {
+	global $ppsl_is_password_page;
+	$ppsl_is_password_page = true;
+
 	ppsl_show_header();
 	$selectedDuration = '31536000';
 	// Get the previously selected value, default is 31536000 seconds
@@ -169,6 +193,9 @@ function ppsl_alert($text)
 
 function ppsl_alert_page($text)
 {
+	global $ppsl_is_password_page;
+	$ppsl_is_password_page = true;
+
 	ppsl_show_header();
 	?>
 	<div class="flex items-center justify-center min-h-screen px-4 py-6">

@@ -5,7 +5,7 @@ Tags: password, protection, sharing
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ Password Protection with Shareable Links is available in the following languages
 - 🇨🇳 Chinese (zh_CN)
 
 == Changelog ==
+
+= 1.2 =
+* Renamed the plugin to be allowed in the plugin directory.
 
 = 1.1 =
 * Added functionality to disable caching for content protected by the plugin to ensure correct display of the password gate and up-to-date content delivery.
