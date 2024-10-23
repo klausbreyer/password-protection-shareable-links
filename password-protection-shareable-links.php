@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Password Protection with Shareable Links
  * Description: Password protection with seamless sharing and secure link generation.
- * Version: 1.2.5
+ * Version: 1.2.6
  * Author: klausbreyer
  * Text Domain: password-protection-shareable-links
  * Domain Path: /languages
@@ -10,14 +10,14 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 include_once plugin_dir_path(__FILE__) . 'options.php';
 include_once plugin_dir_path(__FILE__) . 'crypto.php';
 include_once plugin_dir_path(__FILE__) . 'meta.php';
 include_once plugin_dir_path(__FILE__) . 'gate.php';
-
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
-}
 
 register_activation_hook(__FILE__, 'ppsl_activate');
 function ppsl_activate()
