@@ -3,39 +3,42 @@ if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
 
 add_action('add_meta_boxes', 'ppsl_add_custom_box');
+add_action('admin_enqueue_scripts', 'ppsl_enqueue_admin_assets');
+
 function ppsl_add_custom_box()
 {
-	$screen = get_post_types(['public' => true]); // Get all public post types
+	$screens = get_post_types(['public' => true]);
 
-	foreach ($screen as $single_screen) {
+	foreach ($screens as $single_screen) {
 		add_meta_box(
-			'ppsl_sectionid',             // Unique ID
+			'ppsl_sectionid',                   // Unique ID
 			'Protected Shareable Link',         // Box title
-			'ppsl_custom_box_html',       // Content callback
-			$single_screen,                       // Post type
-			'side',                               // Context
-			'high'                                // Priority
+			'ppsl_custom_box_html',             // Content callback
+			$single_screen,                     // Post type
+			'side',                             // Context
+			'high'                              // Priority
 		);
 	}
 }
+
 function ppsl_custom_box_html($post)
 {
 	$salt = get_option('ppsl_salt');
 	$passwordOption = get_option('ppsl_settings');
-	$password = $passwordOption['ppsl_text_field_0'] ?? '';
+	$password = isset($passwordOption['ppsl_text_field_0']) ? $passwordOption['ppsl_text_field_0'] : '';
 
 	$options = get_option('ppsl_settings');
 	if (!is_array($options)) {
 		$options = array('ppsl_text_field_0' => '');
 	}
 
-	if (!isset($options['ppsl_password_protect']) || !$options['ppsl_password_protect']) {
+	if (empty($options['ppsl_password_protect'])) {
 		?>
 		<p>
 			<?php esc_html_e('The plugin is not yet configured.', 'password-protection-shareable-links'); ?>
 		<p>
 		<p>
-			<a href="/wp-admin/options-general.php?page=password-protection-shareable-links">
+			<a href="<?php echo esc_url(admin_url('options-general.php?page=password-protection-shareable-links')); ?>">
 				<?php esc_html_e('Go to settings.', 'password-protection-shareable-links'); ?>
 			</a>
 		</p>
@@ -48,7 +51,6 @@ function ppsl_custom_box_html($post)
 	$separator = (wp_parse_url($permalink, PHP_URL_QUERY) == NULL) ? '?' : '&';
 	$link = $permalink . $separator . 'password=' . urlencode($encryptedPassword);
 	?>
-
 	<div>
 		<p>
 			<?php esc_html_e('With this link, anyone will have direct access to the protected page or post. After accessing, free navigation is possible as if the password was manually entered. The password is securely encrypted in this link to ensure data protection.', 'password-protection-shareable-links'); ?>
@@ -63,18 +65,27 @@ function ppsl_custom_box_html($post)
 			<?php esc_html_e('Your secure link:', 'password-protection-shareable-links'); ?>
 		</label>
 		<input type="text" id="ppsl_secure_link" value="<?php echo esc_attr($link); ?>" readonly style="width: 100%; margin-bottom: 10px;">
-		<button onclick="copyToClipboard()">
+		<button type="button" onclick="copyToClipboard()">
 			<?php esc_html_e('Copy', 'password-protection-shareable-links'); ?>
 		</button>
 	</div>
-
-	<script>
-		function copyToClipboard() {
-			var copyText = document.getElementById("ppsl_secure_link");
-			copyText.select();
-			document.execCommand("copy");
-		}
-	</script>
-
 	<?php
+}
+
+// Enqueue Admin Scripts and Styles
+function ppsl_enqueue_admin_assets($hook_suffix)
+{
+	// Überprüfen, ob wir auf der Plugin-Einstellungsseite oder der Post-Edit-Seite sind
+	if ($hook_suffix === 'settings_page_password-protection-shareable-links' || $hook_suffix === 'post.php' || $hook_suffix === 'post-new.php') {
+		// Enqueue das Admin-JS
+		wp_enqueue_script(
+			'ppsl-admin-script',
+			plugin_dir_url(__FILE__) . 'js/admin-scripts.js',
+			array(), // Abhängigkeiten, z.B. jQuery
+			'1.0',
+			true // In Footer einbinden
+		);
+
+
+	}
 }
