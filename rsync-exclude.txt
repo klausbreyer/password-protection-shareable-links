@@ -1,0 +1,17 @@
+# Ausschlüsse aus .gitignore
+.git/
+.gitignore
+node_modules/
+vendor/
+*.log
+*.tmp
+.DS_Store
+
+# Zusätzliche Ausschlüsse
+*.zip
+tailwindcss
+
+tailwind.config.js
+styles.css
+rsync-exclude.txt
+Makefile
