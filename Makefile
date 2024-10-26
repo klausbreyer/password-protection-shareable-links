@@ -1,4 +1,28 @@
-# Makefile
+###############################################################################
+# Instructions for Setting Up SVN Repository and Creating a New Release
+#
+#
+# Steps to Set Up SVN Repository:
+# 1. Check out the SVN repository for the plugin:
+#    ```bash
+#    svn checkout https://plugins.svn.wordpress.org/password-protection-shareable-links ~/versioned/password-protection-shareable-links-svn
+#    ```
+#
+# 2. Set up the plugin source code:
+#    Copy or clone the plugin directory into your WordPress installation directory:
+#    ```bash
+#    cp -r ~/path/to/your/plugin ~/versioned/wordpress/wp-content/plugins/password-protection-shareable-links
+#    ```
+#
+# Creating a New Release:
+# To create a new release and publish it to the SVN repository, run:
+# ```bash
+# make release TYPE=patch MSG="Your commit message"
+# ```
+# Replace `patch` with `minor` or `major` depending on the version increment you need.
+#
+###############################################################################
+
 
 # Variables
 PLUGIN_FILE = password-protection-shareable-links.php
