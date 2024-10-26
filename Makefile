@@ -3,7 +3,7 @@ kill:
 
 start:
 	make kill
-	/opt/homebrew/opt/php@8.3/bin/php -S localhost:8000 -t ../../../ & ./tailwindcss -i ./styles.css -o ./dist/styles.css --watch
+	/opt/homebrew/opt/php@8.3/bin/php -S localhost:8000 -t ../../../ & ./tailwindcss -i ./styles.css -o ./css/password-protection-shareable-links.css --watch
 
 
 tailwind-download:
@@ -16,10 +16,10 @@ endif
 	chmod +x tailwindcss
 
 watch:
-	./tailwindcss -i ./styles.css -o ./dist/styles.css --watch
+	./tailwindcss -i ./styles.css -o ./css/password-protection-shareable-links.css --watch
 
 tailwind-build:
-	./tailwindcss -i ./styles.css -o ./dist/styles.css --minify
+	./tailwindcss -i ./styles.css -o ./css/password-protection-shareable-links.css --minify
 
 convert-po-mo:
 	for file in languages/*.po; do \
@@ -65,15 +65,15 @@ endif
 	svn commit -m "$(MSG)"
 
 # Tag a new version
-# Usage: make svn-tag VERSION=1.2.9
+# Usage: make svn-tag VERSION=1.2.11
 svn-tag:
 ifndef VERSION
-	$(error VERSION is not set. Usage: make svn-tag VERSION=1.2.9)
+	$(error VERSION is not set. Usage: make svn-tag VERSION=1.2.11)
 endif
 	@echo "Tagging version $(VERSION)..."
 	svn copy '$(REPO_URL)/trunk' '$(REPO_URL)/tags/$(VERSION)' -m "Tagging version $(VERSION) for release"
 
 
 # Release target
-# Usage: make release VERSION=1.2.8 MSG="Release message"
+# Usage: make release VERSION=1.2.11 MSG="Release message"
 release: svn-sync svn-commit svn-tag

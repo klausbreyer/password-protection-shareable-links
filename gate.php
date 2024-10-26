@@ -12,7 +12,7 @@ function ppsl_enqueue_assets()
 		$wp_scripts->queue = array();
 
 		// Enqueue Ihr eigenes Stylesheet
-		wp_enqueue_style('ppsl-style', plugin_dir_url(__FILE__) . 'dist/styles.css', array(), '1.0');
+		wp_enqueue_style('ppsl-style', plugin_dir_url(__FILE__) . 'css/password-protection-shareable-links.css', array(), '1.0');
 
 		// Falls Sie Skripte benötigen, können Sie diese hier ebenfalls enqueued
 		// wp_enqueue_script( 'ppsl-script', plugin_dir_url( __FILE__ ) . 'dist/script.js', array(), '1.0', true );

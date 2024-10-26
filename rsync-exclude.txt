@@ -12,6 +12,6 @@ vendor/
 tailwindcss
 
 tailwind.config.js
-./styles.css
+styles.css
 rsync-exclude.txt
 Makefile
