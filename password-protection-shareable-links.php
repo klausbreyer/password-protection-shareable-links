@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Password Protection with Shareable Links
  * Description: Password protection with seamless sharing and secure link generation.
- * Version: 1.2.11
+ * Version: 1.2.12
  * Author: klausbreyer
  * Text Domain: password-protection-shareable-links
  * Domain Path: /languages

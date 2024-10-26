@@ -36,8 +36,9 @@ package:
 	zip -r $$(basename $$(pwd)).zip ./* -x "*wordpress-stubs.php" -x "*tailwindcss" -x "*password-protection-shareable-links.zip" -x "*.git*" -x "*Makefile" -x "*composer.json" -x "*composer.lock" -x "*package-lock.json" -x "*package.json" -x "*node_modules*" -x "tailwind.config.js" -x "styles.css" -x ".gitignore"
 
 # SVN Stuff
+# Makefile
 
-# Variables
+# Variablen
 HOME_DIR := $(HOME)
 SOURCE_DIR := $(HOME_DIR)/versioned/wordpress/wp-content/plugins/password-protection-shareable-links/
 SVN_ROOT := $(HOME_DIR)/versioned/password-protection-shareable-links-svn/
@@ -46,34 +47,67 @@ TAGS_DIR := $(SVN_ROOT)/tags/
 EXCLUDE_FILE := $(SOURCE_DIR)rsync-exclude.txt
 REPO_URL := https://plugins.svn.wordpress.org/password-protection-shareable-links
 
-# Sync files with rsync
-# Usage: make svn-sync
-svn-sync:
-	@echo "Syncing files..."
-	rsync -av --delete --exclude-from='$(EXCLUDE_FILE)' '$(SOURCE_DIR)' '$(TRUNK_DIR)'
+PLUGIN_FILE := $(SOURCE_DIR)password-protection-shareable-links.php
+README_FILE := $(SOURCE_DIR)readme.txt
 
-# Commit changes to SVN
-# Usage: make svn-commit MSG="Your commit message"
-svn-commit:
-ifndef MSG
-	$(error MSG is not set. Usage: make svn-commit MSG="Your commit message")
-endif
-	@echo "Committing with message: $(MSG)"
-	cd '$(TRUNK_DIR)' && \
-	svn add --force * --auto-props --parents --depth infinity -q && \
-	svn status | grep '^!' | awk '{print $$2}' | xargs svn delete 2>/dev/null && \
-	svn commit -m "$(MSG)"
+# Funktion zum Erhöhen der Versionsnummer
+define bump_version
+echo "Erhöhe $(1) Version..."; \
+VERSION=$$(grep -m1 'Version:' $(PLUGIN_FILE) | sed 's/.*Version:[[:space:]]*//'); \
+MAJOR=$$(echo $$VERSION | cut -d. -f1); \
+MINOR=$$(echo $$VERSION | cut -d. -f2); \
+PATCH=$$(echo $$VERSION | cut -d. -f3); \
+if [ "$(1)" = "patch" ]; then \
+	PATCH=$$(($$PATCH + 1)); \
+elif [ "$(1)" = "minor" ]; then \
+	MINOR=$$(($$MINOR + 1)); \
+	PATCH=0; \
+elif [ "$(1)" = "major" ]; then \
+	MAJOR=$$(($$MAJOR + 1)); \
+	MINOR=0; \
+	PATCH=0; \
+fi; \
+NEW_VERSION="$$MAJOR.$$MINOR.$$PATCH"; \
+echo "Neue Version: $$NEW_VERSION"; \
+sed -i '' "s/^\([[:space:]]*\*[[:space:]]*Version:\)[[:space:]]*.*/\1 $$NEW_VERSION/" $(PLUGIN_FILE); \
+sed -i '' "s/^\(Stable tag:\)[[:space:]]*.*/\1 $$NEW_VERSION/" $(README_FILE);
+endef
 
-# Tag a new version
-# Usage: make svn-tag VERSION=1.2.11
-svn-tag:
-ifndef VERSION
-	$(error VERSION is not set. Usage: make svn-tag VERSION=1.2.11)
-endif
-	@echo "Tagging version $(VERSION)..."
-	svn copy '$(REPO_URL)/trunk' '$(REPO_URL)/tags/$(VERSION)' -m "Tagging version $(VERSION) for release"
+# Funktion zum Durchführen des Releases
+define do_release
+VERSION=$$(grep -m1 'Version:' $(PLUGIN_FILE) | sed 's/.*Version:[[:space:]]*//'); \
+echo "Synchronisiere Dateien..."; \
+rsync -av --delete --exclude-from='$(EXCLUDE_FILE)' '$(SOURCE_DIR)/' '$(TRUNK_DIR)/'; \
+echo "Committe zu SVN..."; \
+cd '$(TRUNK_DIR)' && \
+svn add --force . --auto-props --parents --depth infinity -q; \
+svn status | grep '^!' | awk '{print $$2}' | xargs svn delete 2>/dev/null || true; \
+svn commit -m "Release Version $$VERSION"; \
+echo "Tagge Version $$VERSION..."; \
+svn copy '$(REPO_URL)/trunk' '$(REPO_URL)/tags/$$VERSION' -m "Tagging Version $$VERSION for release";
+endef
 
+# Release-Ziele
+release-patch:
+	@$(call bump_version,patch)
+	@$(call do_release)
 
-# Release target
-# Usage: make release VERSION=1.2.11 MSG="Release message"
-release: svn-sync svn-commit svn-tag
+release-minor:
+	@$(call bump_version,minor)
+	@$(call do_release)
+
+release-major:
+	@$(call bump_version,major)
+	@$(call do_release)
+
+# Neue Ziele zum Erhöhen der Version ohne SVN
+bump-patch:
+	@$(call bump_version,patch)
+
+bump-minor:
+	@$(call bump_version,minor)
+
+bump-major:
+	@$(call bump_version,major)
+
+.PHONY: release-patch release-minor release-major bump-patch bump-minor bump-major
