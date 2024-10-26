@@ -65,10 +65,15 @@ endif
 	svn commit -m "$(MSG)"
 
 # Tag a new version
-# Usage: make svn-tag VERSION=1.2.8
+# Usage: make svn-tag VERSION=1.2.9
 svn-tag:
 ifndef VERSION
-	$(error VERSION is not set. Usage: make svn-tag VERSION=1.2.8)
+	$(error VERSION is not set. Usage: make svn-tag VERSION=1.2.9)
 endif
 	@echo "Tagging version $(VERSION)..."
 	svn copy '$(REPO_URL)/trunk' '$(REPO_URL)/tags/$(VERSION)' -m "Tagging version $(VERSION) for release"
+
+
+# Release target
+# Usage: make release VERSION=1.2.8 MSG="Release message"
+release: svn-sync svn-commit svn-tag
