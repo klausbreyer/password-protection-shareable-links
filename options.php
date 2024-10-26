@@ -94,6 +94,7 @@ function ppsl_options_page()
 		?>
 	</form>
 	<?php
+	ppsl_plugiplugi_footer();
 }
 
 function ppsl_settings_section_callback()
@@ -129,4 +130,26 @@ function ppsl_check_configuration()
 		</div>
 		<?php
 	}
+}
+
+function ppsl_plugiplugi_footer()
+{
+	$plugin_url = plugin_dir_url(__FILE__);
+	?>
+	<div class="your-plugin-footer" style="margin-top: 40px; display: flex; align-items: center; justify-content: left; flex-direction: row;">
+		<span style="font-size: 1.25em; font-weight: 600; color: #BE185D; margin-right: 10px; flex-shrink: 0">
+			Made by
+		</span>
+		<a href="https://plugiplugi.com" target="_blank" rel="noopener noreferrer" style="margin-right: 10px;">
+			<img src="<?php echo esc_url($plugin_url . 'images/plugiplugi.png'); ?>" alt="Plugiplugi Logo" style="height: 2.5em;">
+		</a>
+
+	</div>
+	<div>
+		<span style="font-size: 1.25em; font-weight: 600; color: #BE185D;">
+			No bullshit, minimal configuration WordPress plugins that do what they promise.
+		</span>
+	</div>
+
+	<?php
 }
