@@ -147,7 +147,7 @@ endif
 	cd '$(TRUNK_DIR)' && \
 	svn add --force * --auto-props --parents --depth infinity -q && \
 	svn status | grep '^!' | awk '{print $$2}' | xargs svn delete 2>/dev/null || true && \
-	svn commit -m "$(MSG)"
+	svn commit -m "$(MSG)" --force-log
 
 # SVN tag
 svn-tag:
@@ -175,3 +175,26 @@ endif
 # Default target
 .PHONY: all
 all: release
+
+# Sync plugin assets to the SVN assets directory
+svn-assets-sync:
+	@echo "Syncing plugin assets to SVN assets directory..."
+	rsync -av --delete $(SOURCE_DIR)/assets/ $(SVN_ROOT)/assets/ \
+		--exclude '*.git*' \
+		--exclude 'Makefile' \
+		--exclude '*.zip' \
+		--exclude '*.md'
+	@echo "Assets synced successfully."
+
+# Commit assets to SVN
+svn-assets-commit:
+	@echo "Adding and committing assets to SVN..."
+	# Add all files in the assets directory to SVN
+	svn add --force $(SVN_ROOT)/assets/* --auto-props --parents --depth infinity -q || true
+	# Commit the changes with a message
+	svn commit -m "Adding or updating assets folder in SVN" $(SVN_ROOT)/assets
+
+
+assets:
+	$(MAKE) svn-assets-sync
+	$(MAKE) svn-assets-commit
