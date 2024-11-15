@@ -4,7 +4,7 @@ Tags: password, protection, sharing
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 1.2.29
+Stable tag: 1.2.32
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,17 +58,25 @@ Should the password be changed, users attempting to access content with an outda
 
 No, the feed is also not accessible, aligning with the intention to prevent unauthorized external access. This ensures that content is secured against unintended distribution.
 
+== Screenshots ==
+
+1. Password Gate with Secure Link
+2. Password Gate without Secure Link
+3. Generating Shareable Link
+4. Secured Link Notification
+5. Password Change Error
+
 == Translations ==
 
 Password Protection with Shareable Links is available in the following languages:
 
-- 🇩🇪 German (de_DE)
-- 🇪🇸 Spanish (es_ES)
-- 🇫🇷 French (fr_FR)
-- 🇮🇹 Italian (it_IT)
-- 🇵🇹 Portuguese (pt_PT)
+- 🇩🇪 German (de)
+- 🇪🇸 Spanish (es)
+- 🇫🇷 French (fr)
+- 🇮🇹 Italian (it)
+- 🇵🇹 Portuguese (pt)
 - 🇺🇦 Ukrainian (uk)
-- 🇨🇳 Chinese (zh_CN)
+- 🇨🇳 Chinese (zh)
 
 == Changelog ==
 
