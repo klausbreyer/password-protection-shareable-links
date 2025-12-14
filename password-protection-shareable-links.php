@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Password Protection with Shareable Links
  * Description: Password protection with seamless sharing and secure link generation.
- * Version: 1.2.32
+ * Version: 1.3.0
  * Author: klausbreyer
  * Text Domain: password-protection-shareable-links
  * Domain Path: /languages
@@ -113,5 +113,40 @@ function ppsl_protect_content()
     if ($passFromCookie !== $savedPassword) {
         ppsl_show_password_form();
         exit;
+    }
+}
+
+// Block comment submissions from users without valid password authentication
+add_action('pre_comment_on_post', 'ppsl_block_unauthorized_comments');
+function ppsl_block_unauthorized_comments($post_id)
+{
+    // Allow admins to comment
+    if (current_user_can('manage_options')) {
+        return;
+    }
+
+    $options = get_option('ppsl_settings');
+    if (!is_array($options)) {
+        $options = array('ppsl_text_field_0' => '');
+    }
+
+    // If password protection is not enabled, allow comments
+    if (!isset($options['ppsl_password_protect']) || !$options['ppsl_password_protect']) {
+        return;
+    }
+
+    $savedPassword = $options['ppsl_text_field_0'];
+    $salt = get_option('ppsl_salt');
+
+    // Check if user has valid password cookie
+    $passFromCookie = isset($_COOKIE['ppsl_pass']) ? ppsl_decrypt(sanitize_text_field(wp_unslash($_COOKIE['ppsl_pass'])), $salt) : '';
+
+    if ($passFromCookie !== $savedPassword) {
+        // Block the comment - WordPress will treat it as spam
+        wp_die(
+            esc_html__('Comments are only allowed for authenticated users. Please enter the password to access this site.', 'password-protection-shareable-links'),
+            esc_html__('Comment Blocked', 'password-protection-shareable-links'),
+            array('response' => 403)
+        );
     }
 }
